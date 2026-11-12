@@ -2,6 +2,13 @@
 
 # Go Rules Engine
 
+> **SpendOne fork.** The prebuilt `deps/*/libzen_ffi.a` archives upstream ship with LLVM LTO
+> sections (`.llvmbc`, `.llvmcmd`, Mach-O `__LLVM`), which go1.27.4 and later reject with
+> `disallowed LTO section` (upstream issue
+> [gorules/zen-go#76](https://github.com/gorules/zen-go/issues/76)). This fork strips those sections with
+> `scripts/strip-lto-sections.sh` and changes nothing else. Drop the fork once upstream ships a release
+> that fixes #76.
+
 ZEN Engine is a cross-platform, Open-Source Business Rules Engine (BRE). It is written in Rust and provides native 
 bindings for **NodeJS**, **Python** and **Go**. ZEN Engine allows to load and execute JSON Decision Model (JDM) from JSON files.
 
